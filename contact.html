@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sweet Crumbs Bakery | Contact Us | Fresh Bread, Custom Cakes & Coffee in Soweto</title>
+<meta name="description" content="Contact Sweet Crumbs Bakery in Soweto - send a general message, feedback or question. Fresh artisan bread, tailor-made cakes, pastries and coffee.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About Us</a>
+<a href="services.html">Services</a>
+<a href="enquiry.html">Enquiry</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<main>
+<h1>Contact Sweet Crumbs Bakery</h1>
+<p>Have a general message for us? Fill in the form below. Your message will be compiled into an email to our bakery.</p>
+
+<p id="errorMessage" style="color:red; display:none;"></p>
+<p id="successMessage" style="color:green; display:none;">Thank you! Your email is ready to send. Your email app will open now.</p>
+
+<form id="contactForm" action="mailto:sweetcrumbsbakery@gmail.com" method="post" enctype="text/plain">
+<label for="name">Full Name:</label><br>
+<input type="text" id="name" name="name" placeholder="e.g. Sasa Sesanda" required minlength="3"><br><br>
+
+<label for="email">Email Address:</label><br>
+<input type="email" id="email" name="email" placeholder="e.g. you@gmail.com" required><br><br>
+
+<label for="phone">Phone Number:</label><br>
+<input type="tel" id="phone" name="phone" placeholder="e.g. 0821234567" pattern="[0-9]{10}" title="Please enter a 10 digit phone number" required><br><br>
+
+<label for="messageType">Type of Message:</label><br>
+<select id="messageType" name="messageType" required>
+<option value="">-- Please Select --</option>
+<option value="General Enquiry">General Enquiry</option>
+<option value="Feedback">Feedback</option>
+<option value="Complaint">Complaint</option>
+<option value="Compliment">Compliment</option>
+<option value="Catering Request">Catering Request</option>
+<option value="Other">Other</option>
+</select><br><br>
+
+<label for="message">Your Full Message:</label><br>
+<textarea id="message" name="message" rows="6" cols="40" placeholder="Type your full message here..." required minlength="10"></textarea><br><br>
+
+<button type="submit">Send Email</button>
+</form>
+</main>
+
+<footer>
+<p>Sweet Crumbs Bakery | Soweto | Fresh bread, custom cakes & coffee daily</p>
+<p><a href="index.html">Home</a> | <a href="about.html">About Us</a> | <a href="services.html">Services</a> | <a href="enquiry.html">Enquiry</a> | <a href="contact.html">Contact</a></p>
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let type = document.getElementById("messageType").value;
+  let message = document.getElementById("message").value.trim();
+  let errorBox = document.getElementById("errorMessage");
+  let successBox = document.getElementById("successMessage");
+
+  if (name.length < 3) {
+    errorBox.style.display = "block";
+    errorBox.textContent = "Error: Please enter your full name (at least 3 characters).";
+    return;
+  }
+  if (!email.includes("@") || !email.includes(".")) {
+    errorBox.style.display = "block";
+    errorBox.textContent = "Error: Please enter a valid email address.";
+    return;
+  }
+  if (phone.length !== 10 || isNaN(phone)) {
+    errorBox.style.display = "block";
+    errorBox.textContent = "Error: Phone number must be 10 digits.";
+    return;
+  }
+  if (type === "") {
+    errorBox.style.display = "block";
+    errorBox.textContent = "Error: Please select the type of message.";
+    return;
+  }
+  if (message.length < 10) {
+    errorBox.style.display = "block";
+    errorBox.textContent = "Error: Please type a longer message (at least 10 characters).";
+    return;
+  }
+
+  errorBox.style.display = "none";
+  successBox.style.display = "block";
+
+  let subject = "Sweet Crumbs Contact - " + type + " from " + name;
+  let body = "Name: " + name + "%0D%0AEmail: " + email + "%0D%0APhone: " + phone + "%0D%0AType: " + type + "%0D%0AMessage: " + message;
+  window.location.href = "mailto:sweetcrumbsbakery@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + body;
+});
+</script>
+
+</body>
+</html>
