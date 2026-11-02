@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sasasesanda-sudo.github.io/sweet-crumbs-bakery/sitemap.xml
