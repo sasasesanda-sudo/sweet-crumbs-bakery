@@ -44,5 +44,19 @@
 <p>&copy; 2026 Sweet Crumbs Bakery | Sisanda Shezi</p>
 </footer>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // 1. Order Now button pops up a message
+  let orderButton = document.querySelector(".btn");
+  if (orderButton) {
+    orderButton.addEventListener("click", function(event) {
+      event.preventDefault();
+      alert("Thank you for choosing Sweet Crumbs! Your fresh goods are waiting for you 🍰");
+    });
+  }
+  // 2. Welcome message in console + on page load
+  console.log("Welcome to Sweet Crumbs Bakery!");
+});
+</script>
 </body>
 </html>
