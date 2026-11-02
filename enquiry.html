@@ -30,7 +30,14 @@
 <h3>Place Your Order</h3>
 <form id="enquiryForm">
 <input type="text" id="name" placeholder="Your Name" required>
-<input type="email" id="email" placeholder="Email" required>
+<input type="email" id="email" placeholder="Email" required><select id="enquiryType" required>
+<option value="">-- What are you enquiring about? --</option>
+<option value="Custom Cake">Custom Cake / Catering Request</option>
+<option value="Wholesale">Wholesale / Corporate Supply</option>
+<option value="Dietary">Dietary / Ingredient Questions</option>
+<option value="Delivery">Delivery - 7-10 business days</option>
+<option value="Other">Other</option>
+</select>
 <textarea id="message" placeholder="Your Order" required></textarea>
 <p id="formMessage" style="color: green; font-weight: bold;"></p>
 <button type="submit">Submit</button>
